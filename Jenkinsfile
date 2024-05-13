@@ -49,15 +49,15 @@ pipeline{
             nexusVersion('nexus3')
             protocol('http')
             nexusUrl('${nexus_url}')
-            groupId('catalogue')
+            groupId('roboshop')
             version('${package_version}')
             repository('catalogue')
             credentialsId('nexus-id')
             artifact {
-                artifactId('nexus-artifact-uploader')
+                artifactId('catalogue')
                 type('jar')
-                classifier('debug')
-                file('catalogue.zip')
+                classifier('')
+                file('catalogue.jar')
             }
     }
                 }        
