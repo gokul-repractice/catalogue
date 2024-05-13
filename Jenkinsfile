@@ -10,6 +10,7 @@ pipeline{
     }
     environment { 
         package_version = ''
+        nexus_url = 'http://172.31.5.248:8081'
     }
     stages{
          stage("get version")
@@ -40,6 +41,24 @@ pipeline{
           ls -ltr
          """   
         }
+    }
+    stage("deploy")
+         {
+                steps {
+          nexusArtifactUploader {
+            nexusVersion('nexus3')
+            protocol('http')
+            nexusUrl('${nexus_url}')
+            groupId('catalogue')
+            version('${package_version}')
+            repository('catalogue')
+            credentialsId('nexus-id')
+            artifact {
+                artifactId('nexus-artifact-uploader')
+                type('jar')
+                classifier('debug')
+                file('catalogue.zip')
+            }
     }
         
       
