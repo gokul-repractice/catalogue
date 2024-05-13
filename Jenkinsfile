@@ -10,7 +10,7 @@ pipeline{
     }
     environment { 
         package_version = ''
-        nexus_url = 'http://172.31.5.248:8081/repository'
+        nexus_url = '172.31.5.248:8081'
     }
     stages{
          stage("get version")
@@ -50,7 +50,7 @@ pipeline{
                                 protocol: 'http',
                            nexusUrl: '${nexus_url}',
                             groupId: 'com.roboshop',
-                            version: '${package_version}',
+                            version: "${package_version}",
                             repository: 'catalogue',
                             credentialsId: 'nexus-id',
                              artifacts: [
