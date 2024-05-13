@@ -50,7 +50,7 @@ pipeline{
     {
         steps{
             build job: "catalogue-deploy",
-            parameters [string(name: 'version', value: "${package_version}")
+            parameters: [string(name: 'version', value: "${package_version}")
                          string(name: 'environment', value: String.valueOf(env))
             ]
           }
