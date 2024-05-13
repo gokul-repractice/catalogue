@@ -54,10 +54,10 @@ pipeline{
                             repository: 'catalogue',
                             credentialsId: 'nexus-id',
                              artifacts: [
-                               [artifactId: catalogue,
+                               [artifactId: 'catalogue',
                                  classifier: '',
-                                    file: 'catalogue-' + version + '.jar',
-                              type: 'jar']
+                                    file: 'catalogue.zip',
+                              type: 'zip']
                                 ]
                             )
                          }        
