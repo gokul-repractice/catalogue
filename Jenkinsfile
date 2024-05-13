@@ -60,8 +60,8 @@ pipeline{
                 file('catalogue.zip')
             }
     }
-        
-      
+                }        
+         } 
 }
  post { 
         always { 
@@ -75,4 +75,4 @@ pipeline{
             echo 'I will always say success!'
         }
     }
-    }
+}
