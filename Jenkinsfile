@@ -42,6 +42,17 @@ pipeline{
          """   
         }
     }
+    stage("send values")
+    {
+        steps{
+          script{
+            build job: "catalogue-deploy",
+            parameters [string(name: 'version', value: "${package_version}"),
+                         string(name: 'environment', value: "dev")
+            ]
+          }
+        }
+    }
     stage("deploy")
          {
                 steps {
