@@ -12,6 +12,10 @@ pipeline{
         package_version = ''
         nexus_url = '172.31.5.248:8081'
     }
+    parameters {
+         string(name: 'version', defaultValue: '', description: 'Pick version')
+         string(name: 'env', defaultValue: 'dev', description: 'Pick environment')
+     }
     stages{
          stage("get version")
          {
@@ -45,13 +49,11 @@ pipeline{
     stage("send values")
     {
         steps{
-          script{
             build job: "catalogue-deploy",
-            parameters [string(name: 'version', value: "${package_version}"),
-                         string(name: 'environment', value: "dev")
+            parameters [string(name: 'version', value: "${package_version}")
+                         string(name: 'environment', value: String.valueOf(env))
             ]
           }
-        }
     }
     stage("deploy")
          {
