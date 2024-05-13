@@ -45,22 +45,22 @@ pipeline{
     stage("deploy")
          {
                 steps {
-          nexusArtifactUploader {
-            nexusVersion('nexus3')
-            protocol('http')
-            nexusUrl('${nexus_url}')
-            groupId('roboshop')
-            version('${package_version}')
-            repository('catalogue')
-            credentialsId('nexus-id')
-            artifact {
-                artifactId('catalogue')
-                type('jar')
-                classifier('')
-                file('catalogue.jar')
-            }
-    }
-                }        
+                          nexusArtifactUploader(
+                            nexusVersion: 'nexus3',
+                                protocol: 'http',
+                           nexusUrl: '${nexus_url}',
+                            groupId: 'com.roboshop',
+                            version: '${package_version}',
+                            repository: 'catalogue',
+                            credentialsId: 'nexus-id',
+                             artifacts: [
+                               [artifactId: catalogue,
+                                 classifier: '',
+                                    file: 'catalogue-' + version + '.jar',
+                              type: 'jar']
+                                ]
+                            )
+                         }        
          } 
 }
  post { 
