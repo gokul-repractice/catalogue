@@ -54,26 +54,26 @@ pipeline{
         }  
          }
     }
-    // stage("deploy")
-    //      {
-    //             steps {
-    //                       nexusArtifactUploader(
-    //                         nexusVersion: 'nexus3',
-    //                             protocol: 'http',
-    //                        nexusUrl: "${nexus_url}",
-    //                         groupId: 'com.roboshop',
-    //                         version: "${package_version}",
-    //                         repository: 'catalogue',
-    //                         credentialsId: 'nexus-id',
-    //                          artifacts: [
-    //                            [artifactId: 'catalogue',
-    //                              classifier: '',
-    //                                 file: 'catalogue.zip',
-    //                           type: 'zip']
-    //                             ]
-    //                         )
-    //                      }        
-    //      } 
+    stage("deploy")
+         {
+                steps {
+                          nexusArtifactUploader(
+                            nexusVersion: 'nexus3',
+                                protocol: 'http',
+                           nexusUrl: "${nexus_url}",
+                            groupId: 'com.roboshop',
+                            version: "${package_version}",
+                            repository: 'catalogue',
+                            credentialsId: 'nexus-id',
+                             artifacts: [
+                               [artifactId: 'catalogue',
+                                 classifier: '',
+                                    file: 'catalogue.zip',
+                              type: 'zip']
+                                ]
+                            )
+                         }        
+         } 
 }
  post { 
         always { 
