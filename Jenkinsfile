@@ -10,7 +10,7 @@ pipeline{
     }
     environment { 
         package_version = ''
-        nexus_url = 'http://172.31.5.248:8081'
+        nexus_url = 'http://172.31.5.248:8081/repository'
     }
     stages{
          stage("get version")
