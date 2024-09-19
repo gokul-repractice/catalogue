@@ -9,7 +9,7 @@ pipeline{
     }
     environment { 
         package_version = ''
-        nexus_url = '172.31.5.248:8081'
+        nexus_url = '172.31.24.109:8081'
     }
 
     stages{
