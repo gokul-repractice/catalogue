@@ -78,7 +78,7 @@ pipeline{
  post { 
         always { 
             echo 'I will always say Hello again!'
-            deleteDir()
+            deleteDir()  // once pipeline run, it will automatically delete directory
         }
         success { 
             echo 'I will always say success!'
